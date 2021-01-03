@@ -16,4 +16,12 @@ public class Student {
     public String getFirstName() {
         return firstName;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId=" + studentId +
+                ", firstName='" + firstName + '\'' +
+                '}';
+    }
 }
