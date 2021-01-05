@@ -48,7 +48,8 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 //.httpBasic();
                 .formLogin()
-                .loginPage("/login").permitAll();
+                .loginPage("/login").permitAll()
+                .defaultSuccessUrl("/courses", true);
 
     }
 
@@ -67,7 +68,6 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .password(passwordEncoder.encode("password123"))
                 //.roles(ADMIN.name())//ROLE_ADMIN
                 .authorities(ADMIN.getGrantedAuthorities())
-
                 .build();
 
         UserDetails tomUser = User.builder()
@@ -75,7 +75,6 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .password(passwordEncoder.encode("password123"))
                 //.roles(ADMINTRAINEE.name())//ROLE_ADMINTRAINEE
                 .authorities(ADMINTRAINEE.getGrantedAuthorities())
-
                 .build();
 
         return new InMemoryUserDetailsManager(
